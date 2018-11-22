@@ -5,11 +5,15 @@ import com.example.emptytest.testglovo.data.models.City;
 import com.example.emptytest.testglovo.data.models.Country;
 import com.example.emptytest.testglovo.data.models.GlovoData;
 
+import org.reactivestreams.Subscription;
+
 import java.util.List;
 
 import io.reactivex.Observable;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.annotations.NonNull;
+import io.reactivex.disposables.CompositeDisposable;
+import io.reactivex.disposables.Disposable;
 import io.reactivex.functions.BiFunction;
 import io.reactivex.schedulers.Schedulers;
 
@@ -17,9 +21,13 @@ import io.reactivex.schedulers.Schedulers;
 public class RestFulAPI {
 
     List<City> mCities = null;
+    private CompositeDisposable compositeDisposable = new CompositeDisposable();
 
     public RestFulAPI(){
 
+    }
+    public void Destroy(){
+        compositeDisposable.clear();
     }
 
     public void getData(@NonNull DataReceiver callbacks){
@@ -35,7 +43,7 @@ public class RestFulAPI {
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread());
 
-        Observable.zip(citiesStream, countriesStream, new BiFunction<List<City>, List<Country>, GlovoData>() {
+        Disposable disposable = Observable.zip(citiesStream, countriesStream, new BiFunction<List<City>, List<Country>, GlovoData>() {
             @Override
             public GlovoData apply(List<City> cities, List<Country> countries) throws Exception {
                 return new GlovoData(cities, countries);
@@ -45,5 +53,7 @@ public class RestFulAPI {
         },throwable->{
             callbacks.onError();
         });
+
+        compositeDisposable.add(disposable);
     }
 }

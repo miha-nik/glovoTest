@@ -31,11 +31,13 @@ public class Repository {
             public void onSuccess(GlovoData data) {
                 DBManager.data = data;
                 callbacks.onSuccess(data);
+                api.Destroy();
             }
 
             @Override
             public void onError() {
                 callbacks.onError();
+                api.Destroy();
             }
         });
     }
