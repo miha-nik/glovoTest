@@ -1,5 +1,4 @@
 # glovoTest
-GlovoTest
 
 Glovo Test project
 
