@@ -6,7 +6,7 @@ additional information
 - Download Glovo challenge-mobile server. To run the server need Node.js
 - Install dependencies, execute command ** npm install ** in server folder.
 
-In Android Studia
+In Android Studio
 - Configure host in build.gredle field buildConfigField "String", "HOST", "\" http://YOUR_LOCAL_SERVER_PATH:3000/\"
 
 (YOUR_LOCAL_SERVER_PATH - can be localhost or something like 192.168.0.108)
