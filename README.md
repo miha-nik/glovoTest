@@ -14,7 +14,7 @@ the user is shown a window with a choice of cities.
 
 **MainPresenterTest** - Tests for main presenter
 
-For run application, download Glovo server. To run the server need Node.js
+For run application, download Glovo challenge-mobile server. To run the server need Node.js
 You need install dependencies, execute command ** npm install ** in server folder.
 
 In Android Studia
