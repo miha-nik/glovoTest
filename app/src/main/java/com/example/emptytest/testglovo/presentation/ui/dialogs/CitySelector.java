@@ -88,7 +88,7 @@ public class CitySelector extends DialogFragment implements DataAdapter.ClickLis
                     listOfElements.add(c);
 
                     for(City city: data.cities){
-                        if(city.getCountryCode().equals(country.getCode())){
+                        if(city.getCountryCode().equals(country.getCode()) && city.mPosition!=null){
                             Item s = new Item();
                             s.setName(city.getName());
                             s.setCity(city);
