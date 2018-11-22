@@ -1,6 +1,6 @@
-# glovoTest
-
-Glovo Test project
+# Glovo Test project 
+Shows a map with working area of Glovo cities on it alongside some
+additional information
 
 StartActivity - shows the download screen and asks the user permission to use his location. Loads data from server.
 
